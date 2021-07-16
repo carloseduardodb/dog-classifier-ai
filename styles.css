@@ -23,24 +23,6 @@ main.main h1 {
   text-align: center;
 }
 
-div.content-details {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 25px;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .details {
   background: #22c1c3;
   background: -webkit-gradient(linear, left bottom, left top, from(#22c1c3), to(rgba(45, 253, 146, 0.510242)));
@@ -50,7 +32,7 @@ div.content-details {
 }
 
 .details details {
-  width: 920px;
+  max-width: 920px;
   color: #111;
   margin: 0 5px;
 }
@@ -79,6 +61,22 @@ div.center-align {
 
 div.center-align div.limit-size {
   width: 900px;
+  position: relative;
+}
+
+div.center-align div.limit-size div.content-details {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  top: -50px;
+  right: 0;
+  cursor: pointer;
 }
 
 div.send-image {
@@ -153,6 +151,8 @@ div.options ul {
   font-weight: bold;
   color: #fff;
   padding-top: 5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 div.options ul li:nth-child(2n) {
@@ -194,5 +194,17 @@ div.load-image img {
   max-height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media only screen and (max-width: 700px) {
+  * ul {
+    gap: 15px;
+  }
+  * li {
+    width: 100%;
+  }
+  div.send-image {
+    padding: 0 20px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
