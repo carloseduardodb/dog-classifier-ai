@@ -23,6 +23,42 @@ main.main h1 {
   text-align: center;
 }
 
+div.content-details {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.details {
+  background: #22c1c3;
+  background: -webkit-gradient(linear, left bottom, left top, from(#22c1c3), to(rgba(45, 253, 146, 0.510242)));
+  background: linear-gradient(0deg, #22c1c3 0%, rgba(45, 253, 146, 0.510242) 100%);
+  padding: 15px 7px 15px 7px;
+  border-radius: 5px;
+}
+
+.details details {
+  width: 920px;
+  color: #111;
+  margin: 0 5px;
+}
+
+.details details p {
+  padding: 20px 0 20px 0;
+}
+
 div.center-align {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -38,6 +74,7 @@ div.center-align {
       -ms-flex-align: center;
           align-items: center;
   min-height: 90vh;
+  position: relative;
 }
 
 div.center-align div.limit-size {
@@ -154,5 +191,8 @@ div.load-image {
 div.load-image img {
   border: 10px solid white;
   border-radius: 10px;
+  max-height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=styles.css.map */

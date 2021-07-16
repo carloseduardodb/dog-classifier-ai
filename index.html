@@ -15,12 +15,19 @@
       </main>
       <div class="center-align">
         <div class="limit-size">
+          <div class="content-details">
+            <div class="details">
+              <details>
+                <p>Mini sistema de classificação de imagens, para saber se um cachorro é baceet, chihuahua, pitbull ou poodle.</p>
+              </details>
+            </div>
+          </div>
           <div class="load-image">
             <img id="preview" src="./background.jpg" width="250" alt="" />
           </div>
           <div class="send-image">
             <label for="image_dog">
-              Clique para adicionar sua imagem
+              <p id="location-src">Clique para adicionar sua imagem</p>
               <input
                 type="file"
                 name="image"
@@ -32,10 +39,10 @@
           </div>
           <div class="options">
             <ul id="options">
-              <li>bacet</li>
-              <li>chihuahua</li>
-              <li>poodle</li>
-              <li>pitbull</li>
+              <li id="bacet">bacet</li>
+              <li id="chihuahua">chihuahua</li>
+              <li id="poodle">poodle</li>
+              <li id="pitbull">pitbull</li>
             </ul>
           </div>
         </div>
@@ -60,17 +67,30 @@
       }
 
       async function predict() {
+        //inicia a predição
         const predictions = await model.predict(
           document.getElementById("preview")
         );
-        console.log(predictions);
-        document.querySelector("ul[id=options]").innerHTML = "";
-        var probability = 0;
         
+        //busca o maior valor probabilistico da classificação de uma imagem
         var max = predictions.reduce(function (prev, current) {
           return prev.probability > current.probability ? prev : current;
         });
 
+        //zera classes ja selecionadas e seleciona a nova
+        document.getElementById("bacet").setAttribute("class", "");
+        document.getElementById("chihuahua").setAttribute("class", "");
+        document.getElementById("poodle").setAttribute("class", "");
+        document.getElementById("pitbull").setAttribute("class", "");
+        document.getElementById(max.className).setAttribute("class", "select")
+
+        //zera li's do DOM
+        //document.querySelector("ul[id=options]").innerHTML = "";
+        
+        /* 
+        ** Caso eu queira adicionar as probabilidades na lista
+        **
+        //percorre o array, renderiza uma "li" a cada interação e adiciona na que tem maior uma classe select
         predictions.map((prediction) => {
           document
             .querySelector("ul[id=options]")
@@ -82,6 +102,7 @@
             );
           probability = prediction.probability;
         });
+        */
       }
 
       function previewImage() {
@@ -94,6 +115,8 @@
 
         if (image) {
           reader.readAsDataURL(image);
+          console.log(image);
+          document.getElementById("location-src").innerText = image.name;
         } else {
           preview.src = "";
         }
